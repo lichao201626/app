@@ -1,9 +1,10 @@
-# server
+#server
   rest api (micro service) 
 # ui
   ssr react bootstrap
 # webview
   build app
+
 
 
 // expand when increase
