@@ -5,12 +5,10 @@ import {
   Form,
   FormGroup,
   FormLabel,
-  FormControl,
-  FormText,
-  Container,
-  Button
+  Container
 } from 'react-bootstrap'
 import react, {Component} from 'react'
+import list from '../api/list'
 import detail from '../api/diary/detail'
 
 export default class New extends react.Component {
@@ -22,16 +20,8 @@ export default class New extends react.Component {
     }
   }
 
-  async componentWillMount() {
-    // const list();
-    console.log("asdfa", this,this.props, this.state)
-    const { data, error } = await detail()
-    console.log("sss", data, error)
-    this.setState({data, error})
-  }
-
   render() {
-    if (!this.state.data) {
+    if (!this.props.data) {
       return (<div> fail to load </div>)
     }
     return (
@@ -51,12 +41,8 @@ export default class New extends react.Component {
         <Container>
           <form>
             <FormGroup>
-              <Button onClick={() => {
-              }}>save</Button>
-            </FormGroup>
-            <FormGroup>
               <FormLabel>文字区域</FormLabel>
-              <Form.Control as="textarea" rows={20} placeholder="textarea" defaultValue={this.state.data.name} />
+              <Form.Control as="textarea" readOnly rows={20} placeholder="textarea" defaultValue={this.props.data.name} />
             </FormGroup>            
           </form>
         </Container>
@@ -71,3 +57,23 @@ export default class New extends react.Component {
   }
 }
 
+// This function gets called at build time
+export async function getStaticPaths() {
+  const posts = await list()
+
+  // Get the paths we want to pre-render based on posts
+  const paths = posts.data.map(post => ({
+    params: { id: post.id.toString() },
+  }))
+
+  // We'll pre-render only these paths at build time.
+  // { fallback: false } means other routes should 404.
+  return { paths, fallback: true }
+}
+
+// This also gets called at build time
+export async function getStaticProps({ params }) {
+  const {error, data} = await detail(params.id);
+  // Pass post data to the page via props
+  return { props: { data } }
+}

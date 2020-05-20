@@ -2,7 +2,6 @@
 const diary = [{ id: 1 }, { id: 2 }, { id: 3 }]
 
 export default async (email) => {
-  console.log("email", email)
   return {
     error: null,
     data: diary

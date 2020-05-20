@@ -1,19 +1,16 @@
 import useSwr from 'swr'
 import Link from 'next/link'
 import Head from 'next/head'
-import Router, { withRouter } from 'next/router'
 import {
   FormLabel,
   Form,
   FormControl,
   Container,
-  Row,
-  Card,
   Button,
   FormGroup
- } from 'react-bootstrap'
+} from 'react-bootstrap'
 import login from './api/login'
-  import React, { Component } from 'react'
+import React, { Component } from 'react'
 
 class Index extends React.Component {
   constructor() {
@@ -25,7 +22,7 @@ class Index extends React.Component {
     this.onClick = this.onClick.bind(this)
   }
 
-  onChange = (e) => this.setState({email: e.target.value})
+  onChange = (e) => this.setState({ email: e.target.value })
 
   onClick = (e) => {
     return login(this.state.email)
@@ -43,7 +40,7 @@ class Index extends React.Component {
             Welcome to Diary
           </h1>
           <p>
-            Get started by editing <code>pages/index.js</code>
+            Get started by login your email
           </p>
         </Container>
         <Container>
@@ -76,4 +73,4 @@ class Index extends React.Component {
   }
 }
 
-export default withRouter(Index)
+export default Index

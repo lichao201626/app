@@ -6,11 +6,10 @@ import {
   FormGroup,
   FormLabel,
   FormControl,
-  FormText,
   Container,
   Button
 } from 'react-bootstrap'
-import react, {Component} from 'react'
+import react, { Component } from 'react'
 
 export default class New extends react.Component {
   constructor() {
@@ -20,26 +19,35 @@ export default class New extends react.Component {
       content: ''
     }
   }
-
+  onTitleChange = (e) => {
+    this.setState({ title: e.target.value })
+  }
+  onContentChange = (e) => {
+    this.setState({ content: e.target.value })
+  }
+  onSave = () => {
+    // get the state
+    // save the data
+  }
   render() {
     return (
       <Container className="md-container">
-      <Head>
-        <title>Diary</title>
-        <link rel="icon" href="/favicon-32x32.png" />
-      </Head>
-      <Container>
-        <h1>
-          Welcome to Diary
+        <Head>
+          <title>Diary</title>
+          <link rel="icon" href="/favicon-32x32.png" />
+        </Head>
+        <Container>
+          <h1>
+            Welcome to Diary
         </h1>
-        <p>
-          Get started by editing <code>pages/index.js</code>
-        </p>
+          <p>
+            Get started by editing <code>pages/index.js</code>
+          </p>
         </Container>
         <Container>
           <form>
             <FormGroup>
-              <Button onClick={this.onClick}>save</Button>
+              <Button onClick={this.onSave}>save</Button>
             </FormGroup>
             <FormGroup
               controlId="formBasicText"
@@ -53,17 +61,23 @@ export default class New extends react.Component {
             </FormGroup>
             <FormGroup>
               <FormLabel>文字区域</FormLabel>
-              <Form.Control as="textarea" rows={20} placeholder="textarea" />
-            </FormGroup>            
+              <Form.Control
+                as="textarea"
+                rows={20}
+                placeholder="textarea"
+                value={this.state.content}
+                onChange={this.onContentChange}
+              />
+            </FormGroup>
           </form>
         </Container>
 
-      <footer className="cntr-footer">
-        <a>
-          Powered by 824683639@qq.com
+        <footer className="cntr-footer">
+          <a>
+            Powered by 824683639@qq.com
         </a>
-      </footer>
-    </Container>
+        </footer>
+      </Container>
     )
   }
 }
