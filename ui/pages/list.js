@@ -1,13 +1,12 @@
-import useSwr from 'swr'
 import Link from 'next/link'
 import Head from 'next/head'
 import {
   Container
 } from 'react-bootstrap'
-import react, { Component } from 'react'
+import { Component } from 'react'
 import list from './api/list'
 
-export default class List extends react.Component {
+export default class List extends Component {
   constructor(ss) {
     super();
     this.state = {

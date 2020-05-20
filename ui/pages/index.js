@@ -1,4 +1,3 @@
-import useSwr from 'swr'
 import Link from 'next/link'
 import Head from 'next/head'
 import {
@@ -44,7 +43,7 @@ class Index extends React.Component {
           </p>
         </Container>
         <Container>
-          <form>
+          <Form>
             <FormGroup
               controlId="formBasicText"
             >
@@ -60,7 +59,7 @@ class Index extends React.Component {
             <FormGroup>
               <Button onClick={this.onClick}>login {this.state.email}</Button>
             </FormGroup>
-          </form>
+          </Form>
         </Container>
 
         <footer className="cntr-footer">

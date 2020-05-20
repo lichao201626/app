@@ -1,4 +1,3 @@
-import useSwr from 'swr'
 import Link from 'next/link'
 import Head from 'next/head'
 import {
@@ -9,9 +8,9 @@ import {
   Container,
   Button
 } from 'react-bootstrap'
-import react, { Component } from 'react'
+import { Component } from 'react'
 
-export default class New extends react.Component {
+export default class New extends Component {
   constructor() {
     super()
     this.state = {
