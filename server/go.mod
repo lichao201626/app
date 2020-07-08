@@ -1,6 +1,3 @@
-module ginserver
+module gserver
 
 go 1.13
-
-require (
-)
