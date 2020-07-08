@@ -22,4 +22,7 @@ func LoginHandler(response http.ResponseWriter, request *http.Request) {
 
 	// t, _ := template.ParseFiles("template/content.html")
 	// t.Execute(response, req["content"].(string))
+	response.Header().Set("name", "my name is smallsoup")
+	response.WriteHeader(200)
+	response.Write([]byte(request.Header.Get("Req")))
 }

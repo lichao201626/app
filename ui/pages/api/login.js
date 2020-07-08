@@ -12,7 +12,7 @@ export default (email) => {
             }
         })
         .then(function (response) {
-            console.log("sss", response)
+            console.log("sss", response, typeof response.data)
 // response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
         });
   // todo login server side
