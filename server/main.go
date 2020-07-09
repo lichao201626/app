@@ -3,8 +3,11 @@ package main
 import (
 	"fmt"
 	"gserver/handler"
+	"gserver/wshandler"
 	"io/ioutil"
 	"net/http"
+
+	"golang.org/x/net/websocket"
 )
 
 type hd struct{}
@@ -40,9 +43,11 @@ func main() {
 	// http.HandleFunc("/", handleHTTP)
 	var x hd
 	http.Handle("/", &x)
+	// 监听socket方法
+	http.Handle("/webSocket", websocket.Handler(wshandler.LoginHandler))
+
 	//监听服务
 	err := http.ListenAndServe("0.0.0.0:8000", nil)
-
 	if err != nil {
 		fmt.Println("服务器错误", err)
 	}

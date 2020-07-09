@@ -20,6 +20,8 @@ func LoginHandler(response http.ResponseWriter, request *http.Request) {
 
 	fmt.Printf("POST form-urlencoded: email=%s\n", req)
 
+	// todo create a websocket
+
 	// t, _ := template.ParseFiles("template/content.html")
 	// t.Execute(response, req["content"].(string))
 	response.Header().Set("name", "my name is smallsoup")
