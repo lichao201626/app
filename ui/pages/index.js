@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Head from 'next/head'
+
 import {
   FormLabel,
   Form,
@@ -7,7 +8,8 @@ import {
   Container,
   Button,
   FormGroup
-} from 'react-bootstrap'
+} from 'antd';
+
 import login from './api/login'
 import React, { Component } from 'react'
 
